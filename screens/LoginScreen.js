@@ -11,8 +11,10 @@ export default class LoginScreen extends React.Component {
     super(props);
     this.state = {
       userInfo: null,
-      email: '46D42B19EA8B96793A9F544460723A63',
-      password: '123456',
+      // email: '46D42B19EA8B96793A9F544460723A63',
+      // password: '123456',
+      email: '',
+      password: '',
       error: '',
       loading: false,
       array: []
@@ -136,12 +138,15 @@ export default class LoginScreen extends React.Component {
 
   onPressLoginButton = async () => {
     var flag = false;
-    const response = await fetch(`https://raw.githubusercontent.com/emonno13/jsontest/master/users.json?fbclid=IwAR2hv8OVpogcBa42FejsP1UIjTmgyXkSRLxEmjjB-xV7TmM1ftZXjAPCews`);
+    // const response = await fetch(`https://raw.githubusercontent.com/emonno13/jsontest/master/users.json?fbclid=IwAR2hv8OVpogcBa42FejsP1UIjTmgyXkSRLxEmjjB-xV7TmM1ftZXjAPCews`);
+    const response = await fetch(`https://raw.githubusercontent.com/emonno13/jsontest/master/userlogin.json`);
     const jsonData = await response.json();
     // = jsonData;
-    console.log(jsonData[500].user_id);
+    // console.log(jsonData[500].user_id);
+    // console.log(jsonData[500].password);
     for (var i = 0; i < jsonData.length; i++) {
-      if (this.state.email === jsonData[i].user_id && this.state.password === '123456') {
+      // if (this.state.email === jsonData[i].user_id && this.state.password === '123456' ) {
+        if (this.state.email === jsonData[i].user_id && this.state.password === jsonData[i].password ) {
         flag = true;
       }
     }
